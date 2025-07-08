@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PW50 Fuel Mix Ratio Calculator — MasterTune Moto Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pw50 Fuel Mix Calculator — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
@@ -59,29 +60,29 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="left">
-      <img src="../logo.png" alt="MasterTune Logo" />
-      <h1>MasterTune Moto Suite</h1>
-    </div>
-    <div>
-      <select class="bike-selector">
-        <option>PW50</option>
-        <option disabled>Cobra (coming soon)</option>
-        <option disabled>CRF50 (coming soon)</option>
-        <option disabled>KTM Mini (coming soon)</option>
-      </select>
-    </div>
-  </header>
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="../logo.png"/>
+<h1>Pw50 Fuel Mix Calculator</h1>
+</div>
+<div>
+<select class="bike-selector">
+<option>PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</div>
+</header>
+<div class="tool-container">
+<!DOCTYPE html>
 
-  <div class="tool-container">
-    <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>PW50 Fuel Mix Calculator</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Fuel Mix Calculator</title>
+<style>
     body {
       background-color: #1e1e1e;
       color: #f4f4f4;
@@ -146,31 +147,25 @@
     </style>
 </head>
 <body>
-  <div class="container">
-  <h1>PW50 Fuel Mix Calculator</h1>
-
-  <label for="fuelType">Fuel Type</label>
-  <select id="fuelType">
-    <option>Pump Gas</option>
-    <option>Race Fuel (MR12)</option>
-  </select>
-
-  <label for="situation">Riding Situation</label>
-  <select id="situation">
-    <option>Break-In</option>
-    <option>Average Riding</option>
-    <option>Racing</option>
-  </select>
-
-  <button onclick="getRatio()">Calculate Mix Ratio</button>
-
-  <div class="result" id="output">Your recommended fuel-to-oil ratio will appear here.</div>
-
-  <div class="footer">
+<div class="container">
+<h1>PW50 Fuel Mix Calculator</h1>
+<label for="fuelType">Fuel Type</label>
+<select id="fuelType">
+<option>Pump Gas</option>
+<option>Race Fuel (MR12)</option>
+</select>
+<label for="situation">Riding Situation</label>
+<select id="situation">
+<option>Break-In</option>
+<option>Average Riding</option>
+<option>Racing</option>
+</select>
+<button onclick="getRatio()">Calculate Mix Ratio</button>
+<div class="result" id="output">Your recommended fuel-to-oil ratio will appear here.</div>
+<div class="footer">
     📥 <a href="#" onclick="window.print()">Print Mix Ratio Chart</a>
-  </div>
-
-  <script>
+</div>
+<script>
     function getRatio() {
       const situation = document.getElementById("situation").value;
       let ratio = "50:1";
@@ -185,13 +180,11 @@
         "Recommended Fuel-to-Oil Ratio: <strong>" + ratio + "</strong>";
     }
   </script>
-  </div>
+</div>
 </body>
 </html>
-
-  </div>
-
-  <footer>
+</div>
+<footer>
     Brought to you by Factory51 · MasterTune Moto Suite © 2025
   </footer>
 </body>

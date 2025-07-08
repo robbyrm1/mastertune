@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pw50 Break In Tracker — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #30e1d3;
+    }
+    header .left {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: #30e1d3;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #30e1d3;
+      border: 1px solid #30e1d3;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+    button {
+      background-color: #30e1d3 !important;
+      color: #0b0d0e !important;
+      font-weight: 600;
+      border: none !important;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    button:hover {
+      background-color: #25c4b8 !important;
+    }
+  </style>
+</head>
+<body>
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="../logo.png"/>
+<h1>Pw50 Break In Tracker</h1>
+</div>
+<div>
+<select class="bike-selector">
+<option>PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</div>
+</header>
+<div class="tool-container">
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Break-In Tracker - MasterTune</title>
+<style>
+    body {
+      background-color: #0B0B0B;
+      color: #FAFAFA;
+      font-family: 'Inter', sans-serif;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: #30e1d3;
+    }
+    label, input, select, textarea {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      background-color: #1F1F1F;
+      color: #FAFAFA;
+      border: none;
+    }
+    button {
+      background-color: #30e1d3;
+      color: #FFF;
+      font-weight: bold;
+      border: none;
+      padding: 0.75rem;
+      width: 100%;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .result {
+      margin-top: 2rem;
+      background-color: #1F1F1F;
+      padding: 1rem;
+      border-left: 4px solid #30e1d3;
+    }
+    ul {
+      margin-top: 1rem;
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+<h1>⏱️ PW50 Break-In Tracker</h1>
+<p><strong>🔥 Factory51 Break-In Protocol</strong><br/>
+  Track your PW50 engine break-in process like a pro. This tool logs your sessions, throttle use, and notes while calculating total time — aiming for 2.0+ hours across multiple heat cycles.</p>
+<div class="result">
+<strong>🚨 READ THIS BEFORE STARTING:</strong>
+<ul>
+<li>✅ Oil tank full and bled? (See Chapter 9)</li>
+<li>✅ Clean, oiled air filter installed?</li>
+<li>✅ Correct spark plug heat range in?</li>
+<li>⚠️ Break in on flat ground. No hills, sand, or mud.</li>
+<li>🚫 Never hold steady throttle. Keep RPMs varied — always moving.</li>
+<li>🧳 Let the bike fully cool between sessions. Heat cycling matters.</li>
+<li>💨 Short 2–3 second throttle bursts are okay — just don’t hold it wide.</li>
+<li>🕵️ Check spark plug color often. Light tan = you're on track.</li>
+</ul>
+<p><strong>🏁 Goal:</strong> Multiple 5–15 min rides, progressing from low throttle to full range. Once the plug reads clean and temps hold steady, you're ready to start tuning for performance.</p>
+</div>
+<label for="session">Enter Session Duration (minutes)</label>
+<input id="session" placeholder="e.g. 20" type="number"/>
+<label for="intensity">Throttle Intensity</label>
+<select id="intensity">
+<option value="Low">Low</option>
+<option value="Medium">Medium</option>
+<option value="High">High</option>
+</select>
+<label for="notes">Notes (terrain, behavior, weather, etc.)</label>
+<textarea id="notes" placeholder="e.g. Easy laps, no WOT, mild hills." rows="3"></textarea>
+<button onclick="logSession()">➕ ADD SESSION</button>
+<button onclick="exportLog()">📀 EXPORT LOG</button>
+<button onclick="window.print()">🖸️ PRINT SUMMARY</button>
+<div class="result" id="summary" style="display:none;"></div>
+<ul id="log"></ul>
+<script>
+    let totalMinutes = 0;
+    let sessionCount = 0;
+    const sessionLog = [];
+
+    function logSession() {
+      const mins = parseInt(document.getElementById("session").value);
+      const intensity = document.getElementById("intensity").value;
+      const notes = document.getElementById("notes").value.trim();
+      if (!mins || mins <= 0) return;
+
+      totalMinutes += mins;
+      sessionCount++;
+      const totalHours = (totalMinutes / 60).toFixed(2);
+
+      const status = totalMinutes >= 120
+        ? "✅ Break-in Complete (2.0+ hours logged)"
+        : totalMinutes >= 90
+        ? "⚠️ Almost done — consider one more heat cycle."
+        : "💠 Still breaking in — take it easy on the throttle.";
+
+      const session = {
+        number: sessionCount,
+        mins,
+        intensity,
+        notes
+      };
+      sessionLog.push(session);
+
+      const log = document.getElementById("log");
+      const li = document.createElement("li");
+      li.textContent = `Session ${session.number}: ${mins} min — ${intensity} throttle — ${notes}`;
+      log.appendChild(li);
+
+      const summary = document.getElementById("summary");
+      summary.innerHTML = `<strong>Total Time:</strong> ${totalHours} hrs<br><strong>Status:</strong> ${status}`;
+      summary.style.display = "block";
+
+      document.getElementById("session").value = "";
+      document.getElementById("notes").value = "";
+    }
+
+    function exportLog() {
+      const text = sessionLog.map(s => `Session ${s.number}: ${s.mins} min — ${s.intensity} throttle — ${s.notes}`).join("\n");
+      const summary = `\n\nTotal Time: ${(totalMinutes / 60).toFixed(2)} hrs`;
+      const blob = new Blob([text + summary], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "pw50_breakin_log.txt";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+  </script>
+</body>
+</html>
+</div>
+<footer>
+    Brought to you by Factory51 · MasterTune Moto Suite © 2025
+  </footer>
+</body>
+</html>
