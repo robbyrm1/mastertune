@@ -8,46 +8,49 @@
 <style>
   body {
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f9fbfc;
+    background-color: #f0f4f7;
     margin: 0;
     padding: 0;
     color: #222;
   }
   header {
-    background-color: #1a1a1a;
-    color: #fff;
-    padding: 1rem;
+    background-color: #02595E;
+    color: #ffffff;
+    padding: 1.2rem;
     text-align: center;
   }
   h1 {
     margin: 0;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: 600;
   }
   .tool-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
+    gap: 1.5rem;
     padding: 2rem;
   }
   .tool-box {
     background-color: #ffffff;
-    border-radius: 12px;
-    padding: 1.5rem;
+    border: 2px solid #02595E;
+    border-radius: 16px;
+    padding: 1.25rem;
     text-align: center;
     text-decoration: none;
-    color: #222;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-    border: 1px solid #e0e0e0;
+    color: #02595E;
+    font-weight: 500;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: all 0.2s ease-in-out;
   }
   .tool-box:hover {
     transform: translateY(-3px);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    background-color: #e8f6f7;
   }
   .tool-box span {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     display: inline-block;
-    margin-top: 0.25rem;
+    margin-top: 0.2rem;
   }
 </style>
 
