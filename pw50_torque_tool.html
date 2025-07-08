@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PW50 Engine Rebuild Torque Tool — MasterTune Moto Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #30e1d3;
+    }
+    header .left {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: #30e1d3;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #30e1d3;
+      border: 1px solid #30e1d3;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+    button {
+      background-color: #30e1d3 !important;
+      color: #0b0d0e !important;
+      font-weight: 600;
+      border: none !important;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    button:hover {
+      background-color: #25c4b8 !important;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left">
+      <img src="../logo.png" alt="MasterTune Logo" />
+      <h1>MasterTune Moto Suite</h1>
+    </div>
+    <div>
+      <select class="bike-selector">
+        <option>PW50</option>
+        <option disabled>Cobra (coming soon)</option>
+        <option disabled>CRF50 (coming soon)</option>
+        <option disabled>KTM Mini (coming soon)</option>
+      </select>
+    </div>
+  </header>
+
+  <div class="tool-container">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engine Rebuild Torque Tool - MasterTune</title>
+  <style>
+    body {
+      background-color: #0B0B0B;
+      font-family: 'Inter', sans-serif;
+      color: #FAFAFA;
+      margin: 0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .description {
+      color: #A0A0A0;
+      margin-bottom: 2rem;
+    }
+    .search-bar {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      background-color: #1F1F1F;
+      color: #FAFAFA;
+    }
+    button {
+      background-color: #30e1d3;
+      color: #FFF;
+      border: none;
+      padding: 0 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 0 4px 4px 0;
+    }
+    details {
+      background-color: #1F1F1F;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+    summary {
+      font-weight: bold;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .result {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #333;
+    }
+    .tip {
+      color: #A0A0A0;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+    .actions button {
+      margin-top: 1rem;
+      margin-right: 1rem;
+      background-color: #1F1F1F;
+      border: 1px solid #FAFAFA;
+      color: #FAFAFA;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧰 PW50 Torque Reference Tool</h1>
+    <p class="description">Essential torque specs for your PW50 engine rebuild. Grouped by assembly, with both Nm and ft·lb values.</p>
+
+    <div class="search-bar">
+      <input type="text" placeholder="Search for torque specs..." id="search" oninput="searchSpecs()" />
+      <button onclick="searchSpecs()">SEARCH</button>
+    </div>
+
+    <div id="results">
+      <details open>
+        <summary>💥 Crankshaft & Internal Rotating Assembly</summary>
+        <div class="result"><span>Flywheel nut</span><span>45 Nm (33 ft·lb)</span></div>
+        <div class="result"><span>Primary gear nut</span><span>39 Nm (29 ft·lb)</span></div>
+        <div class="result"><span>Center case bolts</span><span>10 Nm (7.2 ft·lb)</span></div>
+      </details>
+
+      <details>
+        <summary>🏁 Clutch Shaft (Centrifugal Clutch)</summary>
+        <div class="result"><span>Clutch bolt (centrifugal shoe)</span><span>24 Nm (17 ft·lb)</span></div>
+        <div class="result"><span>Pressure plate screws</span><span>4 Nm (2.9 ft·lb)</span></div>
+      </details>
+
+      <details>
+        <summary>🚀 Output Shaft (Clutch Side)</summary>
+        <div class="result"><span>Clutch nut</span><span>39 Nm (29 ft·lb)</span></div>
+        <div class="result"><span>Clutch case bolts</span><span>10 Nm (7.2 ft·lb)</span></div>
+      </details>
+
+      <details>
+        <summary>⚙️ Rear Drive Housing (Final Drive Box)</summary>
+        <div class="result"><span>Drive housing bolts</span><span>10 Nm (7.2 ft·lb)</span></div>
+        <div class="result"><span>Output shaft nut</span><span>34 Nm (25 ft·lb)</span></div>
+      </details>
+
+      <details>
+        <summary>⚙️ Pinion Shaft / Bevel Gear</summary>
+        <div class="result"><span>Bevel gear cover bolts</span><span>10 Nm (7.2 ft·lb)</span></div>
+      </details>
+    </div>
+
+    <div class="tip">
+      💡 TIP: Always use a calibrated torque wrench. Recheck torque values after heat cycles during break-in.
+    </div>
+
+    <div class="tip" style="margin-top: 2rem;">
+      📏 <strong>General Torque Guidelines by Bolt Size (Yamaha Rule of Thumb)</strong>
+      <p>Yamaha follows general torque guidelines based on bolt diameter and thread pitch, especially when a specific torque spec isn’t listed in the service manual.</p>
+      <table style="width:100%; margin-top: 1rem; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid #444;">
+            <th style="text-align: left; padding: 0.5rem;">Bolt Size</th>
+            <th style="text-align: left; padding: 0.5rem;">Standard Torque (Nm)</th>
+            <th style="text-align: left; padding: 0.5rem;">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding: 0.5rem;">M4</td><td style="padding: 0.5rem;">2–3 Nm</td><td style="padding: 0.5rem;">Very small — used in electronics and covers</td></tr>
+          <tr><td style="padding: 0.5rem;">M5</td><td style="padding: 0.5rem;">4–6 Nm</td><td style="padding: 0.5rem;">Often used for small brackets</td></tr>
+          <tr><td style="padding: 0.5rem;">M6</td><td style="padding: 0.5rem;">7–10 Nm</td><td style="padding: 0.5rem;">Case screws, small clamps</td></tr>
+          <tr><td style="padding: 0.5rem;">M8</td><td style="padding: 0.5rem;">17–25 Nm</td><td style="padding: 0.5rem;">Most engine mounts, shock bolts</td></tr>
+          <tr><td style="padding: 0.5rem;">M10</td><td style="padding: 0.5rem;">30–45 Nm</td><td style="padding: 0.5rem;">Axles, swingarms, cylinder heads</td></tr>
+          <tr><td style="padding: 0.5rem;">M12</td><td style="padding: 0.5rem;">50–70 Nm</td><td style="padding: 0.5rem;">Rear axles, crank bolts</td></tr>
+          <tr><td style="padding: 0.5rem;">M14</td><td style="padding: 0.5rem;">80–110 Nm</td><td style="padding: 0.5rem;">Flywheel nuts, large suspension hardware</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="actions">
+      <button onclick="window.print()">🖨️ Print</button>
+      <button onclick="alert('Save to device function placeholder')">💾 Save to Device</button>
+    </div>
+  </div>
+
+  <script>
+    function searchSpecs() {
+      const input = document.getElementById("search").value.toLowerCase();
+      const details = document.querySelectorAll("details");
+      let anyVisible = false;
+
+      details.forEach(section => {
+        let matchFound = false;
+        const results = section.querySelectorAll(".result");
+
+        results.forEach(result => {
+          const text = result.innerText.toLowerCase();
+          const visible = text.includes(input);
+          result.style.display = visible ? "flex" : "none";
+          if (visible) matchFound = true;
+        });
+
+        section.open = true;
+        section.style.display = matchFound ? "block" : "none";
+        if (matchFound) anyVisible = true;
+      });
+
+      if (!anyVisible) {
+        document.getElementById("results").innerHTML = "<p style='color: #30e1d3; text-align: center;'>⚠️ No matching torque specs found.</p>";
+      }
+    }
+  </script>
+</body>
+</html>
+
+  </div>
+
+  <footer>
+    Brought to you by Factory51 · MasterTune Moto Suite © 2025
+  </footer>
+</body>
+</html>
