@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>PW50 Routine Maintenance Tool — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #30e1d3;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #30e1d3;
+      margin: 0;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #30e1d3;
+      border: 1px solid #30e1d3;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 2rem;
+      padding-left: 1rem;
+      cursor: pointer;
+      color: #30e1d3;
+    }
+    .section {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #1c1f26;
+      border-radius: 6px;
+      display: none;
+    }
+    .task {
+      margin-bottom: 1.1rem;
+    }
+    label {
+      font-weight: bold;
+    }
+    input[type="checkbox"] {
+      margin-right: 0.5rem;
+      transform: scale(1.2);
+      accent-color: #30e1d3;
+    }
+    button {
+      background-color: #30e1d3;
+      color: #0b0d0e;
+      font-weight: bold;
+      border: none;
+      padding: 0.75rem;
+      margin-top: 2rem;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    button:hover {
+      background-color: #25c4b8;
+    }
+  </style>
+</head>
+<body>
+<header>
+<div class="left" style="display: flex; align-items: center;">
+<img alt="MasterTune Logo" src="https://robbymcbride.github.io/mastertune-main/images/mastertune-logo.png"/>
+<h1>MasterTune Moto Suite</h1>
+</div>
+<div>
+<select class="bike-selector">
+<option>PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+</select>
+</div>
+</header>
+<div class="tool-container">
+<h2>PW50 Routine Maintenance Tool</h2>
+<p>Stay race-ready with daily, weekly, monthly, and seasonal checklists. Your data saves in-browser automatically.</p>
+<div id="checklists"></div>
+<button onclick="exportLog()">📋 Copy Maintenance Log</button>
+<button onclick="window.print()">🖨️ Print Maintenance Log</button>
+</div>
+<footer>
+    Brought to you by Factory51 · MasterTune Moto Suite © 2025
+  </footer>
+<script>
+    const data = {
+      'Before Every Ride': [
+        'Fuel level — check premix if oil pump is deleted',
+        'Air filter — clean and seated correctly',
+        'Tire pressure — 10–12 PSI rear, 12–14 PSI front',
+        'Brakes — check front and rear function',
+        'Throttle — should snap closed cleanly',
+        'Kill switch — test function',
+        'Axles — verify tightness',
+        'Leaks — look for oil or fuel drips',
+        'Rear drive — confirm it’s greased and smooth'
+      ],
+      'Weekly Checklist': [
+        'Spark plug (BR4HS) — inspect and clean',
+        'Mag wheel tension — check both wheels for warping',
+        'Engine — inspect for damage or weeping seals',
+        'Cables — check slack in throttle & choke',
+        'Frame & subframe — scan for cracks, bends',
+        'Bolts — re-torque all major fasteners',
+        'Fuel — flush stale gas from the tank'
+      ],
+      'Monthly Maintenance': [
+        'Carburetor — clean and confirm float height',
+        'Clutch — inspect shoes for wear',
+        'Gear oil — drain and refill',
+        'Silencer — repack if applicable',
+        'Oil pump — check function (if installed)',
+        'Rear end — inspect alignment and tension',
+        'Air filter — re-oil properly',
+        'Controls — grease throttle tube & brake pivots'
+      ],
+      'Seasonal Overhaul': [
+        'Bearings — check wheels, headset, and swingarm',
+        'Compression — test top-end health',
+        'Top-end — inspect or rebuild as needed',
+        'Spark plug (BR4HS) — replace regardless of appearance',
+        'Fuel lines — refresh hoses and inline filters',
+        'Injector — bleed system if still in use',
+        'Frame — touch up paint and rust spots',
+        'Steering stem — check for slop',
+        'Engine mounts — verify torque on bolts'
+      ],
+      'Consumables to Keep on Hand': [
+        'BR4HS spark plugs',
+        '2-stroke oil',
+        'Air filter cleaner & oil',
+        'Gear oil — 80W90 or Yamaha spec',
+        'Zip ties & safety wire',
+        'Blue Loctite',
+        'Fuel line + inline filters',
+        'Common O-rings & gaskets',
+        'Spare throttle and choke cables',
+        'Brake shoes',
+        'Silencer packing'
+      ]
+    };
+
+    function saveTask(group, i, value) {
+      localStorage.setItem(`${group}_${i}_checked`, value);
+    }
+
+    function createChecklist() {
+      const container = document.getElementById("checklists");
+      Object.keys(data).forEach(group => {
+        const groupId = group.replace(/[^a-z0-9]/gi, '_');
+        const header = document.createElement('h2');
+        header.innerText = group;
+        header.style.borderLeft = '4px solid #30e1d3';
+        header.onclick = () => {
+          const el = document.getElementById(groupId);
+          el.style.display = el.style.display === 'block' ? 'none' : 'block';
+        };
+
+        const div = document.createElement('div');
+        div.className = 'section';
+        div.id = groupId;
+
+        data[group].forEach((task, i) => {
+          const checked = localStorage.getItem(`${group}_${i}_checked`) === 'true';
+          div.innerHTML += `
+            <div class="task">
+              <label><input type="checkbox" onchange="saveTask('${group}', ${i}, this.checked)" ${checked ? 'checked' : ''}> ${task}</label>
+            </div>
+          `;
+        });
+
+        container.appendChild(header);
+        container.appendChild(div);
+      });
+    }
+
+    function exportLog() {
+      let output = '📋 MasterTune PW50 Routine Maintenance Log\n\n';
+      Object.keys(data).forEach(group => {
+        output += `=== ${group} ===\n`;
+        data[group].forEach((task, i) => {
+          const checked = localStorage.getItem(`${group}_${i}_checked`) === 'true' ? '✅' : '⬜';
+          output += `${checked} ${task}\n`;
+        });
+        output += '\n';
+      });
+      navigator.clipboard.writeText(output).then(() => {
+        alert("Maintenance log copied to clipboard!");
+      });
+    }
+
+    createChecklist();
+  </script>
+</body>
+</html>

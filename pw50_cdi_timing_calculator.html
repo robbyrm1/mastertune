@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pw50 Cdi Timing Calculator — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #30e1d3;
+    }
+    header .left {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: #30e1d3;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #30e1d3;
+      border: 1px solid #30e1d3;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+    button {
+      background-color: #30e1d3 !important;
+      color: #0b0d0e !important;
+      font-weight: 600;
+      border: none !important;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    button:hover {
+      background-color: #25c4b8 !important;
+    }
+  </style>
+</head>
+<body>
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="https://robbymcbride.github.io/mastertune-main/images/mastertune-logo.png"/>
+<h1>Pw50 Cdi Timing Calculator</h1>
+</div>
+<div>
+<select class="bike-selector">
+<option>PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</div>
+</header>
+<div class="tool-container">
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 CDI Timing Calculator — MasterTune</title>
+<style>
+    body {
+      background-color: #0B0B0B;
+      color: #FAFAFA;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      color: #30e1d3;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    label {
+      margin-top: 1rem;
+      display: block;
+      font-weight: bold;
+    }
+    input, select, button {
+      margin-top: 0.5rem;
+      padding: 0.5rem;
+      background-color: #1F1F1F;
+      color: #FAFAFA;
+      border: 1px solid #333;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
+    button {
+      background-color: #30e1d3;
+      font-weight: bold;
+      margin-top: 1.5rem;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border-left: 4px solid #30e1d3;
+      background-color: #1F1F1F;
+    }
+    .notes {
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      color: #CCCCCC;
+    }
+  </style>
+</head>
+<body>
+<h1>Pw50 Cdi Timing Calculator</h1>
+<p>Convert your dial gauge reading in millimeters into degrees BTDC. Useful for timing aftermarket CDI stators by measuring piston position before Top Dead Center (TDC).</p>
+<label for="stroke">Crankshaft Stroke (mm)</label>
+<select id="stroke">
+<option value="39.2">39.2mm (Stock)</option>
+<option value="45">45mm (Stroker)</option>
+</select>
+<label for="flywheel">Flywheel Circumference (mm)</label>
+<input id="flywheel" type="number" value="377"/>
+<label for="timingMM">Distance Before TDC (mm)</label>
+<input id="timingMM" placeholder="e.g. 1.5" type="number"/>
+<button onclick="calculateDegrees()">🔧 Convert to Degrees</button>
+<div class="result" id="result" style="display:none;"></div>
+<div class="notes">
+<p><strong>Note:</strong> This gives a great starting point, but ignition timing should always be tested and adjusted based on real-world performance. Final adjustment is best done with the stator case off while observing spark timing and throttle response.</p>
+<p>This calculator assumes a general flywheel size of 377mm (PW50 CDI flywheel). If you're using a different flywheel, update the value above.</p>
+</div>
+<script>
+    function calculateDegrees() {
+      const stroke = parseFloat(document.getElementById('stroke').value);
+      const flywheel = parseFloat(document.getElementById('flywheel').value);
+      const timingMM = parseFloat(document.getElementById('timingMM').value);
+      if (isNaN(timingMM) || timingMM <= 0) {
+        alert('Please enter a valid mm value.');
+        return;
+      }
+
+      const mmPerDegree = flywheel / 360;
+      const degrees = timingMM / mmPerDegree;
+      
+      const resultBox = document.getElementById('result');
+      resultBox.innerHTML = `<strong>Degrees Before TDC:</strong> ${degrees.toFixed(2)}°`;
+      resultBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+</div>
+<footer>
+    Brought to you by Factory51 · MasterTune Moto Suite © 2025
+  </footer>
+</body>
+</html>
