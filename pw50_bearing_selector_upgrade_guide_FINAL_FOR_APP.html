@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Bearing Selector &amp; Upgrade Guide — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #30e1d3;
+    }
+    header .left {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: #30e1d3;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #30e1d3;
+      border: 1px solid #30e1d3;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+    select, .section {
+      background-color: #1F1F1F;
+      color: #FAFAFA;
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-bottom: 2rem;
+      border: none;
+      width: 100%;
+    }
+    .output {
+      border-left: 4px solid #30e1d3;
+      padding-left: 1rem;
+      display: none;
+    }
+    ul {
+      list-style-type: '✅ ';
+      padding-left: 1rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="../logo.png"/>
+<h1>MasterTune Moto Suite</h1>
+</div>
+<div>
+<select class="bike-selector">
+<option>PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</div>
+</header>
+<div class="tool-container">
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Bearing Selector &amp; Upgrade Guide — Factory51</title>
+<style>
+    body {
+      background-color: #0B0B0B;
+      color: #FAFAFA;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 2rem;
+    }
+    h1 {
+      color: #30e1d3;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    select, .section {
+      background-color: #1F1F1F;
+      color: #FAFAFA;
+      font-size: 1rem;
+      padding: 0.5rem;
+      margin-bottom: 2rem;
+      border: none;
+      width: 100%;
+    }
+    .output {
+      border-left: 4px solid #30e1d3;
+      padding-left: 1rem;
+      display: none;
+    }
+    ul {
+      list-style-type: '✅ ';
+      padding-left: 1rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+<h1>🏁 PW50 Bearing Selector &amp; Upgrade Guide</h1>
+<p>Choose the section of the bike to view bearing information.</p>
+<select id="sectionSelector" onchange="showSection()">
+<option value="">-- Select Section --</option>
+<option value="front">🛞 Front Wheel Bearings</option>
+<option value="rear">🛞 Rear Hub Bearings</option>
+<option value="pinion">⚙️ Pinion Shaft Bearings</option>
+<option value="final">⚙️ Final Drive Bearings</option>
+<option value="clutch">🛠 Clutch Shaft Bearings</option>
+<option value="output">🛠 Output Shaft Bearings</option>
+<option value="crank">💥 Crankshaft Bearings</option>
+<option value="trans">🧪 Transmission Bearings</option>
+</select>
+<div class="output" id="front">
+<ul>
+<li><strong>Stock:</strong> (2) 6200 sealed bearings</li>
+<li><strong>Upgrade:</strong> Rubber sealed RS or Ceramic Hybrid sealed</li>
+</ul>
+</div>
+<div class="output" id="rear">
+<ul>
+<li><strong>Stock:</strong> (1) 6201 sealed bearing</li>
+<li><strong>Upgrade:</strong> Koyo, SKF, or Ceramic Hybrid 6201</li>
+</ul>
+</div>
+<div class="output" id="pinion">
+<ul>
+<li><strong>Stock:</strong> (2) 6201 bearings</li>
+<li><strong>Upgrade:</strong> Nachi or NSK</li>
+</ul>
+</div>
+<div class="output" id="final">
+<ul>
+<li><strong>Stock:</strong> (2) 6202 bearings</li>
+<li><strong>Upgrade:</strong> Nachi or NSK C3 Clearance</li>
+</ul>
+</div>
+<div class="output" id="clutch">
+<ul>
+<li><strong>Stock:</strong> (1) 6302 bearing</li>
+<li><strong>Upgrade:</strong> Ceramic Hybrid</li>
+</ul>
+</div>
+<div class="output" id="output">
+<ul>
+<li><strong>Stock:</strong> (1) 6203 bearing</li>
+<li><strong>Upgrade:</strong> Ceramic Hybrid</li>
+</ul>
+</div>
+<div class="output" id="crank">
+<ul>
+<li><strong>Stock:</strong> (2) 6203 C3</li>
+<li><strong>Upgrade:</strong> Nachi/NSK/Koyo 6203 C3 or Ceramic Hybrid</li>
+</ul>
+</div>
+<div class="output" id="trans">
+<ul>
+<li><strong>Stock:</strong> 6201 + 6202 + 6301</li>
+<li><strong>Upgrade:</strong> Full Ceramic or Koyo steel with matched clearance</li>
+</ul>
+</div>
+<script>
+    function showSection() {
+      const allSections = document.querySelectorAll('.output');
+      allSections.forEach(section => section.style.display = 'none');
+
+      const selected = document.getElementById('sectionSelector').value;
+      if (selected) {
+        document.getElementById(selected).style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
+</div>
+<footer>
+    Brought to you by Factory51 · MasterTune Moto Suite © 2025
+  </footer>
+<script>
+    function showSection() {
+      const allSections = document.querySelectorAll('.output');
+      allSections.forEach(section => section.style.display = 'none');
+
+      const selected = document.getElementById('sectionSelector').value;
+      if (selected) {
+        document.getElementById(selected).style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>

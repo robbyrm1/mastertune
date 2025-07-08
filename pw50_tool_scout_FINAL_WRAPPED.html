@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pw50 Tool Scout Final Wrapped — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #30e1d3;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #30e1d3;
+    }
+    h2 {
+      color: #30e1d3;
+      margin-top: 2rem;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #30e1d3;
+      border: 1px solid #30e1d3;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      accent-color: #30e1d3;
+      margin-right: 0.5rem;
+    }
+    label {
+      display: block;
+      margin: 0.75rem 0;
+    }
+    button {
+      background-color: #30e1d3;
+      color: #0b0d0e;
+      font-weight: 600;
+      padding: 0.75rem;
+      width: 100%;
+      border: none;
+      margin-top: 2rem;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    button:hover {
+      background-color: #25c4b8;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+  </style>
+</head>
+<body>
+<header>
+<div class="left" style="display: flex; align-items: center;">
+<img alt="MasterTune Logo" src="../logo.png"/>
+<h1>Pw50 Tool Scout Final Wrapped</h1>
+</div>
+<div>
+<select class="bike-selector">
+<option>PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+</select>
+</div>
+</header>
+<div class="tool-container">
+<h1>🏁 Race-Day Flow Checklist</h1>
+<p>Follow this system before every moto. Calm rider. Prepped bike. Focused pit.</p>
+<h2>🧰 Bike Prep</h2>
+<label><input type="checkbox"/> Fuel topped and on correct mix?</label>
+<label><input type="checkbox"/> Oil/premix level checked?</label>
+<label><input type="checkbox"/> Filter clean, oiled, and sealed?</label>
+<label><input type="checkbox"/> Tires and wheels inspected?</label>
+<label><input type="checkbox"/> Axles, bolts, and controls torqued?</label>
+<h2>🎯 Jetting &amp; Engine Setup</h2>
+<label><input type="checkbox"/> Confirm correct main &amp; pilot jets</label>
+<label><input type="checkbox"/> Needle clip &amp; air screw adjusted</label>
+<label><input type="checkbox"/> Choke working properly</label>
+<label><input type="checkbox"/> Engine warmed properly</label>
+<h2>🪖 Rider Gear Check</h2>
+<label><input type="checkbox"/> Helmet, goggles, gloves, boots on</label>
+<label><input type="checkbox"/> Jersey tucked, number plate visible</label>
+<label><input type="checkbox"/> Radio or coaching device set</label>
+<label><input type="checkbox"/> Hydrated and stretched?</label>
+<h2>🧠 Mental &amp; Gate Flow</h2>
+<label><input type="checkbox"/> Rider understands start plan</label>
+<label><input type="checkbox"/> Rider cues reviewed (elbows up, eyes forward)</label>
+<label><input type="checkbox"/> Bike in staging, fuel ON, no stand under it</label>
+<label><input type="checkbox"/> Pit crew calm and focused</label>
+<button onclick="alert('Checklist complete. Good luck out there!')">✅ COMPLETE FLOW CHECK</button>
+</div>
+<footer>
+    Brought to you by Factory51 · MasterTune Moto Suite © 2025
+  </footer>
+</body>
+</html>
