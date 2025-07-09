@@ -134,5 +134,12 @@
     </div>
 
   </div>
+
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(r => r.text())
+    .then(t => document.getElementById('footer-container').innerHTML = t);
+</script>
 </body>
 </html>

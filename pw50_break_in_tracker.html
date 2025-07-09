@@ -152,9 +152,7 @@
     <ul id="log"></ul>
   </div>
 
-  <footer>
-    Brought to you by Factory51 · MasterTune Moto Suite © 2025
-  </footer>
+  
 
   <script>
     let totalMinutes = 0;
@@ -211,5 +209,12 @@
       document.body.removeChild(a);
     }
   </script>
+
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(r => r.text())
+    .then(t => document.getElementById('footer-container').innerHTML = t);
+</script>
 </body>
 </html>

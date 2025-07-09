@@ -149,9 +149,7 @@
   <div class="result" id="result" style="display: none;"></div>
 </div>
 
-<footer>
-  Brought to you by Factory51 · MasterTune Moto Suite © 2025
-</footer>
+
 
 <script>
   function estimateRatio(stroke) {
@@ -204,6 +202,13 @@
     `;
     document.getElementById("result").style.display = "block";
   }
+</script>
+
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(r => r.text())
+    .then(t => document.getElementById('footer-container').innerHTML = t);
 </script>
 </body>
 </html>

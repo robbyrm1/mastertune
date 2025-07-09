@@ -138,9 +138,7 @@
     <textarea placeholder="Any rider feedback, parent notes, bike feel, fatigue, hydration, or coaching observations." rows="5"></textarea>
   </div>
 
-  <footer>
-    Brought to you by Factory51 · MasterTune Moto Suite © 2025
-  </footer>
+  
 
   <script>
     let lapCount = 0;
@@ -224,5 +222,12 @@
       });
     }
   </script>
+
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(r => r.text())
+    .then(t => document.getElementById('footer-container').innerHTML = t);
+</script>
 </body>
 </html>
