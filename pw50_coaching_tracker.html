@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PW50 Coaching Tracker — MasterTune Moto Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #1ce3e0;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1ce3e0;
+      margin: 0;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #1ce3e0;
+      border: 1px solid #1ce3e0;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      accent-color: #30e1d3;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      background-color: #1c1f26;
+      color: #f0f6fc;
+      border: none;
+    }
+    button {
+      background-color: #1ce3e0;
+      color: #0b0d0e;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+    button:hover {
+      background-color: #25c4b8;
+    }
+    .block {
+      background-color: #1c1f26;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #1ce3e0;
+    }
+    h2 {
+      color: #1ce3e0;
+      margin-top: 2rem;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left">
+      <img src="images/mastertune-logo.png" alt="MasterTune Logo"/>
+      <h1>PW50 Coaching Tracker</h1>
+    </div>
+    <select class="bike-selector">
+      <option selected>PW50</option>
+      <option disabled>Cobra (coming soon)</option>
+      <option disabled>CRF50 (coming soon)</option>
+    </select>
+  </header>
+
+  <div class="tool-container">
+    <h2>PW50 Coaching Tracker</h2>
+    <p>Use this coaching tool during practice or race day to log lap times, record visual/riding cues, and monitor rider performance. Saved data is stored in your browser and can be exported or visualized anytime.</p>
+    <ul>
+      <li><strong>Lap Time Logger:</strong> Enter a time and notes each lap. It auto-saves, graphs laps, and tracks progress.</li>
+      <li><strong>Copy All Lap Data:</strong> Copies your full lap log to clipboard for sharing or posting.</li>
+      <li><strong>Export Lap Log:</strong> Downloads a text file of all lap times and notes.</li>
+      <li><strong>Attack Stance & Corner Cue Builders:</strong> Add visual/riding cues and drills for specific track sections.</li>
+      <li><strong>Notes Log:</strong> Use for hydration, fatigue, behavior, or feedback — all tied to lap-by-lap effort.</li>
+    </ul>
+
+    <h2>⏱️ Lap Time Logger</h2>
+    <input id="lapTime" placeholder="Enter lap time in seconds" type="number"/>
+    <textarea id="lapNotes" placeholder="Corner notes, throttle, position, etc." rows="2"></textarea>
+    <button onclick="addLap()">➕ Log Lap</button>
+    <button onclick="copyLapData()">📋 Copy All Lap Data</button>
+    <button onclick="exportLapData()">💼 Export Lap Log</button>
+    <div id="lapLog"></div>
+    <canvas id="lapChart" width="400" height="200"></canvas>
+
+    <h2>📋 Posture & Cue Builder</h2>
+    <textarea placeholder="Drills: knees out, elbows up, chin forward, toes on pegs, light hands..." rows="4"></textarea>
+    <p><em>Use this space to record cues or run specific stance drills for warm-up or training focus.</em></p>
+
+    <h2>💡 Corner Cue Builder</h2>
+    <textarea placeholder="Ex: Elbows up, eyes forward, inside leg pressure, smooth throttle roll." rows="4"></textarea>
+    <p><em>Build cues and visuals for each specific corner or section of track.</em></p>
+
+    <h2>🧠 General Notes Log</h2>
+    <textarea placeholder="Any rider feedback, parent notes, bike feel, fatigue, hydration, or coaching observations." rows="5"></textarea>
+  </div>
+
+  <footer>
+    Brought to you by Factory51 · MasterTune Moto Suite © 2025
+  </footer>
+
+  <script>
+    let lapCount = 0;
+    const lapTimes = [];
+    const lapNotesArr = [];
+    const ctx = document.getElementById('lapChart').getContext('2d');
+    const lapChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Lap Times (s)',
+          data: [],
+          borderColor: '#1ce3e0',
+          fill: false,
+          tension: 0.1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            title: { display: true, text: 'Seconds' },
+            beginAtZero: true
+          },
+          x: {
+            title: { display: true, text: 'Lap Number' }
+          }
+        }
+      }
+    });
+
+    function addLap() {
+      const lapTime = parseFloat(document.getElementById("lapTime").value);
+      const lapNotes = document.getElementById("lapNotes").value;
+      if (!lapTime) return;
+
+      lapCount++;
+      lapTimes.push(lapTime);
+      lapNotesArr.push(lapNotes);
+
+      const log = document.getElementById("lapLog");
+      const block = document.createElement("div");
+      block.className = "block";
+      block.innerHTML = `<strong>Lap ${lapCount}:</strong> ${lapTime}s<br><em>Notes:</em> ${lapNotes}`;
+      log.appendChild(block);
+
+      lapChart.data.labels.push(`Lap ${lapCount}`);
+      lapChart.data.datasets[0].data.push(lapTime);
+      lapChart.update();
+
+      localStorage.setItem("lapTimes", JSON.stringify(lapTimes));
+      localStorage.setItem("lapNotesArr", JSON.stringify(lapNotesArr));
+
+      document.getElementById("lapTime").value = "";
+      document.getElementById("lapNotes").value = "";
+    }
+
+    function copyLapData() {
+      const text = lapTimes.map((time, index) => `Lap ${index + 1}: ${time}s — ${lapNotesArr[index]}`).join("\n");
+      navigator.clipboard.writeText(text).then(() => alert("Lap data copied to clipboard!"));
+    }
+
+    function exportLapData() {
+      const text = lapTimes.map((time, index) => `Lap ${index + 1}: ${time}s — ${lapNotesArr[index]}`).join("\n");
+      const blob = new Blob([text], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "pw50_lap_log.txt";
+      a.click();
+    }
+
+    window.onload = function() {
+      const savedTimes = JSON.parse(localStorage.getItem("lapTimes")) || [];
+      const savedNotes = JSON.parse(localStorage.getItem("lapNotesArr")) || [];
+      savedTimes.forEach((time, index) => {
+        document.getElementById("lapTime").value = time;
+        document.getElementById("lapNotes").value = savedNotes[index];
+        addLap();
+      });
+    }
+  </script>
+</body>
+</html>

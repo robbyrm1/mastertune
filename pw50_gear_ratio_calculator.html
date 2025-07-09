@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PW50 Gear Ratio Calculator — MasterTune Moto Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #30e1d3;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #30e1d3;
+      margin: 0;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #30e1d3;
+      border: 1px solid #30e1d3;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    select, input, button {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+      background-color: #1F1F1F;
+      color: #FAFAFA;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #30e1d3;
+      color: #0b0d0e;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    button:hover {
+      background-color: #25c4b8;
+    }
+    .result {
+      background-color: #1F1F1F;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-left: 4px solid #30e1d3;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left">
+      <img src="images/mastertune-logo.png" alt="MasterTune Logo"/>
+      <h1>PW50 Gear Ratio Calculator</h1>
+    </div>
+    <select class="bike-selector">
+      <option selected>PW50</option>
+      <option disabled>Cobra (coming soon)</option>
+      <option disabled>CRF50 (coming soon)</option>
+      <option disabled>KTM Mini (coming soon)</option>
+    </select>
+  </header>
+
+  <div class="tool-container">
+    <h1>🏁 PW50 Gear Ratio Calculator</h1>
+    <p>This tool shows engine RPM at a <strong>simulated 50 MPH</strong> to help preview whether you’re spinning the motor too fast. It’s not your actual speed — just a reference point to spot risky setups.</p>
+
+    <p><strong>🔧 PW50 Safe RPM Zones</strong></p>
+    <ul>
+      <li>Stock PW50: 7,500–8,200 RPM (⚠️ Danger: 9,000+)</li>
+      <li>Rev Plate / Light Porting: 8,500–9,500 RPM (⚠️ Danger: 10,000+)</li>
+      <li>60cc Kit: 7,000–8,000 RPM (⚠️ Danger: 8,500+)</li>
+      <li>Moped-Style Mod: 9,500–11,000+ RPM (⚠️ Danger: 12,000+)</li>
+    </ul>
+
+    <label for="primary">Primary Gear</label>
+    <select id="primary">
+      <option value="33">Stock 33T</option>
+      <option value="32">Solid State 32T</option>
+    </select>
+
+    <label for="rear">Rear Drive Gear</label>
+    <select id="rear">
+      <option value="11">PW50 11T</option>
+      <option value="10">QT50 10T</option>
+    </select>
+
+    <label for="speed">Speed (MPH)</label>
+    <input id="speed" type="number" step="1" value="50"/>
+
+    <button onclick="calculateRPM()">⚙️ Calculate RPM</button>
+    <div class="result" id="result" style="display:none;"></div>
+  </div>
+
+  <footer>
+    Brought to you by Factory51 · MasterTune Moto Suite © 2025
+  </footer>
+
+  <script>
+    function calculateRPM() {
+      const primary = parseFloat(document.getElementById("primary").value);
+      const rear = parseFloat(document.getElementById("rear").value);
+      const speed = parseFloat(document.getElementById("speed").value);
+
+      const internalRatio = 7.67;
+      const tireDiameter = 15.3;
+      const finalDriveRatio = internalRatio * (rear / primary);
+
+      const engineRPM = (speed * 1056 * finalDriveRatio) / tireDiameter;
+
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = `
+        <strong>Engine RPM @ ${speed} MPH:</strong> ${Math.round(engineRPM).toLocaleString()} RPM<br>
+        <br><em>Note:</em> Compare to safe RPM zones above. This is for reference only.
+      `;
+      resultBox.style.display = "block";
+    }
+  </script>
+</body>
+</html>
