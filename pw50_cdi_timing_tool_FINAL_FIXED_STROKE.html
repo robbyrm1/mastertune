@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Pw50 Compression Analyzer — MasterTune Moto Suite</title>
+<title>PW50 CDI Timing Tool — MasterTune Moto Suite</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
 <style>
     body {
@@ -77,7 +77,7 @@
 <header>
 <div class="left">
 <img alt="MasterTune Logo" src="../logo.png"/>
-<h1>Pw50 Compression Analyzer</h1>
+<h1>MasterTune Moto Suite</h1>
 </div>
 <div>
 <select class="bike-selector">
@@ -95,93 +95,88 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>PW50 Compression Analyzer - MasterTune</title>
+<title>PW50 CDI Timing Tool Calculator — MasterTune</title>
 <style>
     body {
       background-color: #0B0B0B;
       color: #FAFAFA;
       font-family: 'Inter', sans-serif;
+      margin: 0;
       padding: 2rem;
-      max-width: 700px;
-      margin: auto;
     }
     h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 2.5rem;
       color: #30e1d3;
+      font-size: 2rem;
       margin-bottom: 1rem;
     }
-    .tip {
-      color: #A0A0A0;
-      font-size: 0.95rem;
-      margin-bottom: 2rem;
-    }
-    label, input, select {
+    label {
+      margin-top: 1rem;
       display: block;
-      width: 100%;
-      margin: 0.5rem 0 1rem;
+      font-weight: bold;
+    }
+    input, select, button {
+      margin-top: 0.5rem;
       padding: 0.5rem;
-      font-size: 1rem;
       background-color: #1F1F1F;
       color: #FAFAFA;
-      border: none;
+      border: 1px solid #333;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 1rem;
     }
     button {
       background-color: #30e1d3;
-      color: #FFF;
       font-weight: bold;
-      border: none;
-      padding: 0.75rem;
-      width: 100%;
+      margin-top: 1.5rem;
       cursor: pointer;
     }
     .result {
-      margin-top: 2rem;
-      background-color: #1F1F1F;
+      margin-top: 1.5rem;
       padding: 1rem;
       border-left: 4px solid #30e1d3;
+      background-color: #1F1F1F;
+    }
+    .notes {
+      font-size: 0.9rem;
+      margin-top: 2rem;
+      color: #CCCCCC;
     }
   </style>
 </head>
 <body>
-<h1>🔍 PW50 Compression Analyzer</h1>
-<div class="tip">
-    Enter your kick test compression reading (PSI) to get a quick status report. Make sure the throttle is wide open and the gauge is sealed properly.
-  </div>
-<label for="useType">Select Use Type</label>
-<select id="useType">
-<option value="race">🏁 Race Build</option>
-<option value="backyard">🌳 Backyard Rider</option>
+<h1>🧭 PW50 CDI Timing Tool Calculator</h1>
+<p>Convert your dial gauge reading in millimeters into degrees BTDC. Useful for timing aftermarket CDI stators by measuring piston position before Top Dead Center (TDC).</p>
+<label for="stroke">Crankshaft Stroke (mm)</label>
+<select id="stroke">
+<option value="39.2">39.2mm (Stock)</option>
+<option value="45">45mm (Stroker)</option>
 </select>
-<label for="psi">Compression Reading (PSI)</label>
-<input id="psi" placeholder="e.g. 125" step="1" type="number"/>
-<button onclick="checkCompression()">📊 ANALYZE</button>
+<label for="flywheel">Flywheel Circumference (mm)</label>
+<input id="flywheel" type="number" value="377"/>
+<label for="timingMM">Distance Before TDC (mm)</label>
+<input id="timingMM" placeholder="e.g. 1.5" type="number"/>
+<button onclick="calculateDegrees()">🔧 Convert to Degrees</button>
 <div class="result" id="result" style="display:none;"></div>
+<div class="notes">
+<p><strong>Note:</strong> This gives a great starting point, but ignition timing should always be tested and adjusted based on real-world performance. Final adjustment is best done with the stator case off while observing spark timing and throttle response.</p>
+<p>This calculator assumes a general flywheel size of 377mm (PW50 CDI flywheel). If you're using a different flywheel, update the value above.</p>
+</div>
 <script>
-    function checkCompression() {
-      const psi = parseInt(document.getElementById("psi").value);
-      const useType = document.getElementById("useType").value;
-      const result = document.getElementById("result");
-
-      let msg = "";
-
-      if (useType === "race") {
-        if (psi > 180) msg = "🧨 CRAZY! Robby must’ve built this one — compression is off the charts.";
-        else if (psi >= 140) msg = "🔥 Strong compression — fresh top end or high-performance setup.";
-        else if (psi >= 125) msg = "✅ Healthy compression — engine in good condition.";
-        else if (psi >= 110) msg = "⚠️ Borderline — running OK but nearing rebuild territory.";
-        else if (psi >= 90) msg = "⚠️ Low compression — expect weak starts, bogging.";
-        else msg = "❌ Critical — rebuild top end ASAP. Performance will be poor.";
-      } else {
-        if (psi > 180) msg = "🧨 Overkill for the backyard! Robby’s fingerprints all over this one.";
-        else if (psi >= 135) msg = "🔥 Excellent for backyard fun — may be a modded build.";
-        else if (psi >= 115) msg = "✅ Solid — reliable for casual riding.";
-        else if (psi >= 100) msg = "⚠️ Usable but could use a refresh soon.";
-        else msg = "❌ Weak compression — hard starts, fouling likely. Top end time.";
+    function calculateDegrees() {
+      const stroke = parseFloat(document.getElementById('stroke').value);
+      const flywheel = parseFloat(document.getElementById('flywheel').value);
+      const timingMM = parseFloat(document.getElementById('timingMM').value);
+      if (isNaN(timingMM) || timingMM <= 0) {
+        alert('Please enter a valid mm value.');
+        return;
       }
 
-      result.innerHTML = `<strong>Compression:</strong> ${psi} PSI<br><br><strong>Status:</strong> ${msg}`;
-      result.style.display = "block";
+      const mmPerDegree = flywheel / 360;
+      const degrees = timingMM / mmPerDegree;
+      
+      const resultBox = document.getElementById('result');
+      resultBox.innerHTML = `<strong>Degrees Before TDC:</strong> ${degrees.toFixed(2)}°`;
+      resultBox.style.display = 'block';
     }
   </script>
 </body>
