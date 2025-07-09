@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -60,76 +59,44 @@
       gap: 1.25rem;
     }
     .tool-box {
-      display: block;
       background-color: #161b22;
       border: 1px solid #30363d;
       padding: 1.25rem;
       border-radius: 12px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      text-align: center;
-      transition: 0.3s;
-      color: #1ce3e0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      user-select: none;
+      color: #f0f6fc;
     }
     .tool-box:hover {
-      border-color: #1ce3e0;
-      background-color: #1a1f28;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+      background-color: #21262d;
+    }
+    .tool-box span {
+      display: block;
+      font-size: 1rem;
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
 <header>
 <div class="left">
-<img alt="MasterTune Moto Suite Logo" src="https://robbymcbride.github.io/mastertune-main/images/mastertune-logo.png"/>
-<h1>MasterTune Moto Suite</h1>
+<img alt="MasterTune Logo" src="logo.png"/>
+<h1>Index</h1>
 </div>
+<div>
 <select class="bike-selector">
 <option>PW50</option>
-<option disabled="">CRF50 (coming soon)</option>
 <option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
 </select>
+</div>
 </header>
 <div class="container">
-<div class="category">
-<h2>Calculators &amp; Visualizers</h2>
-<div class="grid">
-<a class="tool-box" href="piston_clearance_and_ring_gap_calculator.html">Piston Clearance &amp; Ring Gap Calculator</a>
-<a class="tool-box" href="pw50_cdi_timing_calculator.html">CDI Timing Tool</a>
-<a class="tool-box" href="pw50_compression_analyzer.html">Compression Checker</a>
-<a class="tool-box" href="pw50_fuel_mix_calculator.html">Fuel Mix Ratio Calculator</a>
-<a class="tool-box" href="pw50_gear_ratio_calculator.html">Gear Ratio Calculator</a>
-<a class="tool-box" href="pw50_jet_calculator.html">Jetting Calculator</a>
-<a class="tool-box" href="pw50_port_timing_visualizer.html">Port Timing Visualizer</a>
-</div>
-</div>
-<div class="category">
-<h2>Maintenance &amp; Prep Tools</h2>
-<div class="grid">
-<a class="tool-box" href="pw50_between_motos_checklist.html">Between Motos Checklist</a>
-<a class="tool-box" href="pw50_break_in_tracker.html">Break-In Tracker</a>
-<a class="tool-box" href="pw50_oil_pump_setup_tool.html">Oil Pump Setup Tool</a>
-<a class="tool-box" href="pw50_pre_race_checklist.html">Pre-Race Checklist</a>
-<a class="tool-box" href="pw50_race_day_flow_checklist.html">Race-Day Flow Checklist</a>
-<a class="tool-box" href="pw50_routine_maintenance_tool.html">Routine Maintenance Tracker</a>
-<a class="tool-box" href="pw50_teardown_tracker_.html">Teardown Tracker</a>
-<a class="tool-box" href="pw50_tool_scout.html">Tool Scout Checklist</a>
-<a class="tool-box" href="pw50_torque_tool.html">Torque Spec Tool</a>
-</div>
-</div>
-<div class="category">
-<h2>Diagnostics &amp; Setup Logs</h2>
-<div class="grid">
-<a class="tool-box" href="pw50_51_point_inspection_sheet.html">51-Point Inspection Sheet</a>
-<a class="tool-box" href="pw50_bearing_selector_upgrade_guide.html">Bearing Selector &amp; Upgrade Guide</a>
-<a class="tool-box" href="pw50_blueprint_log.html">Blueprint Log</a>
-<a class="tool-box" href="pw50_coaching_tracker.html">Rider Coaching Tracker</a>
-<a class="tool-box" href="pw50_reality_check.html">Build Reality Check</a>
-<a class="tool-box" href="pw50_vin_decoder.html">VIN Decoder</a>
-</div>
-</div>
+<div class="category"><h2>Calculators</h2><div class="grid"><a class="tool-box" href="Calculators/Fuel%20Mix%20ratio%20calculator.html"><span>Fuel Mix Ratio Calculator</span></a><a class="tool-box" href="Calculators/PW50%20CDI%20Timing%20Tool.html"><span>Pw50 Cdi Timing Tool</span></a><a class="tool-box" href="Calculators/PW50%20compression_checker_tool.html"><span>Pw50 Compression Checker Tool</span></a><a class="tool-box" href="Calculators/PW50%20port_timing_visualizer.html"><span>Pw50 Port Timing Visualizer</span></a><a class="tool-box" href="Calculators/PW50%20vin_decoder.html"><span>Pw50 Vin Decoder</span></a><a class="tool-box" href="Calculators/pw50_jet%20calculator.html"><span>Pw50 Jet Calculator</span></a><a class="tool-box" href="Calculators/pw50_oil_pump%20Setup_tool_.html"><span>Pw50 Oil Pump Setup Tool </span></a><a class="tool-box" href="Calculators/pw50_ring_gap_calculator_.html"><span>Pw50 Ring Gap Calculator </span></a><a class="tool-box" href="Calculators/pw_50_gear%20ratio%20calculator.html"><span>Pw 50 Gear Ratio Calculator</span></a></div></div><div class="category"><h2>Checklist Tools</h2><div class="grid"><a class="tool-box" href="Checklist%20Tools/pw50%20build_reality_check.html"><span>Pw50 Build Reality Check</span></a><a class="tool-box" href="Checklist%20Tools/pw50%20pre_race_checklist.html"><span>Pw50 Pre Race Checklist</span></a><a class="tool-box" href="Checklist%20Tools/pw50%20race_day_flow_checklist.html"><span>Pw50 Race Day Flow Checklist</span></a><a class="tool-box" href="Checklist%20Tools/pw50%20tool_scout_with_checkboxes%20(1).html"><span>Pw50 Tool Scout With Checkboxes (1)</span></a><a class="tool-box" href="Checklist%20Tools/pw50_between_motos_checklist_tool_orange_title.html"><span>Pw50 Between Motos Checklist Tool Orange Title</span></a><a class="tool-box" href="Checklist%20Tools/pw50_routine_maintenance_tool_with_final_exports.html"><span>Pw50 Routine Maintenance Tool With Final Exports</span></a></div></div><div class="category"><h2>Trackers</h2><div class="grid"><a class="tool-box" href="Trackers/pw50%20break_in_tracker_tool.html"><span>Pw50 Break In Tracker Tool</span></a><a class="tool-box" href="Trackers/pw50%20engine_rebuild_torque_tool.html"><span>Pw50 Engine Rebuild Torque Tool</span></a><a class="tool-box" href="Trackers/pw50%20rider_coaching_tools.html"><span>Pw50 Rider Coaching Tools</span></a><a class="tool-box" href="Trackers/pw50_51_point_inspection_checkered_flag.html"><span>Pw50 51 Point Inspection Checkered Flag</span></a><a class="tool-box" href="Trackers/pw50_teardown_tracker_expanded.html"><span>Pw50 Teardown Tracker Expanded</span></a></div></div>
 </div>
 </body>
 </html>
