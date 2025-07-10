@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PW50 VIN Decoder — MasterTune Moto Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #30e1d3;
+    }
+    header .left {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: #30e1d3;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #30e1d3;
+      border: 1px solid #30e1d3;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .description {
+      color: #A0A0A0;
+      margin-bottom: 2rem;
+    }
+    .input-block {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      background-color: #1F1F1F;
+      color: #FAFAFA;
+    }
+    button {
+      background-color: #30e1d3;
+      color: #0b0d0e;
+      font-weight: 600;
+      border: none;
+      padding: 0 1.5rem;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    }
+    button:hover {
+      background-color: #25c4b8;
+    }
+    .results {
+      background-color: #1F1F1F;
+      border-radius: 6px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .result-item {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #333;
+      font-size: 1.1rem;
+    }
+    .tip {
+      color: #A0A0A0;
+      font-size: 0.9rem;
+      margin: 2rem 0 1rem;
+    }
+    .actions button {
+      margin-top: 1rem;
+      margin-right: 1rem;
+      background-color: #1F1F1F;
+      border: 1px solid #FAFAFA;
+      color: #FAFAFA;
+      border-radius: 4px;
+      padding: 0.5rem 1rem;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="left">
+    <img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
+    <h1><a href="index.html">MasterTune Moto Suite</a></h1>
+  </div>
+  <select class="bike-selector">
+    <option>PW50</option>
+    <option disabled>Cobra (coming soon)</option>
+    <option disabled>CRF50 (coming soon)</option>
+    <option disabled>KTM Mini (coming soon)</option>
+  </select>
+</header>
+
+<div class="tool-container">
+  <h2 class="tool-name">PW50 VIN Decoder</h2>
+  <p class="description">Enter the 10th digit of your PW50 VIN to find your model year and details.</p>
+  <div class="input-block">
+    <input id="vinDigit" maxlength="1" placeholder="Enter 10th digit (e.g. N)" type="text"/>
+    <button onclick="decodeVIN()">DECODE</button>
+  </div>
+  <div class="results" id="resultBox" style="display:none">
+    <div class="result-item" id="yearResult"></div>
+    <div class="result-item" id="notesResult"></div>
+  </div>
+  <div class="tip">💡 TIP: The VIN is stamped on the frame, usually near the front steering tube.</div>
+  <div class="actions">
+    <button onclick="window.print()">🖨️ Print</button>
+    <button onclick="saveData()">💾 Save to Device</button>
+  </div>
+</div>
+
+
+
+<script>
+  const vinMap = {
+    A: { year: 1980 }, B: { year: 1981 }, C: { year: 1982 }, D: { year: 1983 },
+    E: { year: 1984 }, F: { year: 1985 }, G: { year: 1986 }, H: { year: 1987 },
+    J: { year: 1988 }, K: { year: 1989 }, L: { year: 1990 }, M: { year: 1991 },
+    N: { year: 1992 }, P: { year: 1993 }, R: { year: 1994 }, S: { year: 1995 },
+    T: { year: 1996 }, V: { year: 1997 }, W: { year: 1998 }, X: { year: 1999 },
+    Y: { year: 2000 }, 1: { year: 2001 }, 2: { year: 2002 }, 3: { year: 2003 },
+    4: { year: 2004 }, 5: { year: 2005 }, 6: { year: 2006 }, 7: { year: 2007 },
+    8: { year: 2008 }, 9: { year: 2009 }, A1: { year: 2010 }, B1: { year: 2011 },
+    C1: { year: 2012 }, D1: { year: 2013 }, E1: { year: 2014 }, F1: { year: 2015 },
+    G1: { year: 2016 }, H1: { year: 2017 }, J1: { year: 2018 }, K1: { year: 2019 },
+    L1: { year: 2020 }, M1: { year: 2021 }, N1: { year: 2022 }, P1: { year: 2023 },
+    R1: { year: 2024 }, S1: { year: 2025 }
+  };
+
+  function decodeVIN() {
+    const digit = document.getElementById("vinDigit").value.toUpperCase();
+    const resultBox = document.getElementById("resultBox");
+    const yearResult = document.getElementById("yearResult");
+    const notesResult = document.getElementById("notesResult");
+
+    const result = vinMap[digit] || vinMap[digit + "1"];
+
+    if (result) {
+      yearResult.innerText = `📅 Model Year: ${result.year}`;
+      notesResult.innerText = "✔️ Confirmed for Yamaha PW50 series.";
+      resultBox.style.display = "block";
+    } else {
+      yearResult.innerText = "⚠️ Unknown VIN digit. Please double-check.";
+      notesResult.innerText = "";
+      resultBox.style.display = "block";
+    }
+  }
+
+  function saveData() {
+    alert("Save to device function placeholder");
+  }
+</script>
+
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(r => r.text())
+    .then(t => document.getElementById('footer-container').innerHTML = t);
+</script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PW50 Blueprint Log — MasterTune Moto Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #1ce3e0;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1ce3e0;
+      margin: 0;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #1ce3e0;
+      border: 1px solid #1ce3e0;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    label, input, select, textarea {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0 1rem;
+      padding: 0.5rem;
+      font-size: 1rem;
+      background-color: #1F1F1F;
+      color: #FAFAFA;
+      border: none;
+    }
+    textarea {
+      resize: vertical;
+    }
+    button {
+      background-color: #1ce3e0;
+      color: #0b0d0e;
+      font-weight: 600;
+      border: none;
+      padding: 0.75rem;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      margin-top: 1rem;
+    }
+    button:hover {
+      background-color: #25c4b8;
+    }
+    .tip {
+      color: #A0A0A0;
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left">
+      <img src="images/mastertune-logo.png" alt="MasterTune Logo"/>
+      <h1><a href="index.html">MasterTune Moto Suite</a></h1>
+    </div>
+    <select class="bike-selector">
+      <option selected>PW50</option>
+      <option disabled>Cobra (coming soon)</option>
+      <option disabled>CRF50 (coming soon)</option>
+      <option disabled>KTM Mini (coming soon)</option>
+    </select>
+  </header>
+
+  <div class="tool-container">
+  <h2 class="tool-name">PW50 Blueprint Log</h2>
+    <h1><a href="index.html">MasterTune Moto Suite</a></h1>
+    <div class="tip">
+      Record your precision engine specs here. Rear-to-front order. PW50-specific. Tuned by Factory51.
+    </div>
+
+    <!-- Fields -->
+    <label for="rearAxle">Rear Axle Diameter (mm)</label><input id="rearAxle" step="0.1" type="number"/>
+    <label for="spacerWidth">Rear Wheel Spacer Width (mm)</label><input id="spacerWidth" step="0.1" type="number"/>
+    <label for="ringBacklash">Ring Gear Backlash (mm)</label><input id="ringBacklash" step="0.01" type="number"/>
+    <label for="outputPlay">Output Shaft Endplay (mm)</label><input id="outputPlay" step="0.01" type="number"/>
+    <label for="outputSeal">Output Shaft Seal Depth (mm)</label><input id="outputSeal" step="0.1" type="number"/>
+    <label for="pinionDia">Pinion Shaft Diameter (mm)</label><input id="pinionDia" step="0.01" type="number"/>
+    <label for="gearFloat">Gearbox Axial Float (mm)</label><input id="gearFloat" step="0.01" type="number"/>
+    <label for="bellID">Clutch Bell Inside Diameter (mm)</label><input id="bellID" step="0.01" type="number"/>
+    <label for="shoeWidth">Clutch Shoe Width (mm)</label><input id="shoeWidth" step="0.01" type="number"/>
+    <label for="clutchShaft">Clutch Shaft Diameter (mm)</label><input id="clutchShaft" step="0.01" type="number"/>
+    <label for="washerStack">Clutch Washer Stack Notes</label><input id="washerStack" type="text"/>
+    <label for="clutchEndplay">Clutch Shaft End Play (mm)</label><input id="clutchEndplay" step="0.01" type="number"/>
+    <label for="caseDepth">Trenching Depth (mm)</label><input id="caseDepth" step="0.01" type="number"/>
+    <label for="caseBoreID">Main Bearing Bore ID (mm)</label><input id="caseBoreID" step="0.01" type="number"/>
+    <label for="crankPin">Crank Pin Diameter (mm)</label><input id="crankPin" step="0.01" type="number"/>
+    <label for="rodSide">Rod Side Clearance (mm)</label><input id="rodSide" step="0.01" type="number"/>
+    <label for="smallEndID">Small End Rod ID (mm)</label><input id="smallEndID" step="0.01" type="number"/>
+    <label for="deck">Deck Height @ TDC (mm)</label><input id="deck" step="0.01" type="number"/>
+    <label for="squish">Squish Clearance (mm)</label><input id="squish" step="0.01" type="number"/>
+    <label for="chamberVol">Combustion Chamber Volume (cc)</label><input id="chamberVol" step="0.1" type="number"/>
+    <label for="squishBand">Squish Band Width (mm)</label><input id="squishBand" step="0.01" type="number"/>
+    <label for="piston">Piston Diameter (mm)</label><input id="piston" step="0.01" type="number"/>
+    <label for="ringGap">Measured Ring Gap (inches)</label><input id="ringGap" step="0.0001" type="number"/>
+    <label for="clearance">Piston-to-Cylinder Clearance (inches)</label><input id="clearance" step="0.0001" type="number"/>
+    <label for="plugThread">Plug Thread Protrusion (mm)</label><input id="plugThread" step="0.01" type="number"/>
+    <label for="exPort">Exhaust Port Height from Deck (mm)</label><input id="exPort" step="0.1" type="number"/>
+    <label for="exWidth">Exhaust Port Width (mm)</label><input id="exWidth" step="0.1" type="number"/>
+    <label for="transPort">Transfer Port Height from Deck (mm)</label><input id="transPort" step="0.1" type="number"/>
+    <label for="intakeDeg">Intake Duration (degrees)</label><input id="intakeDeg" type="number"/>
+    <label for="buildIntent">Build Intent (Rec / Race / Stroker / etc.)</label><input id="buildIntent" type="text"/>
+    <label for="fuelInfo">Fuel & Oil Ratio</label><input id="fuelInfo" placeholder="e.g. VP C12 @ 40:1" type="text"/>
+    <label for="pipeUsed">Pipe Used (OEM / Brand)</label><input id="pipeUsed" type="text"/>
+    <label for="notes">Builder Notes</label><textarea id="notes" placeholder="Add head type, port mod notes, part fitment..." rows="4"></textarea>
+
+    <button onclick="alert('Log generated. Export functionality coming soon.')">📄 GENERATE LOG</button>
+  </div>
+
+  
+
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(r => r.text())
+    .then(t => document.getElementById('footer-container').innerHTML = t);
+</script>
+</body>
+</html>

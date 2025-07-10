@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PW50 Fuel Mix Calculator — MasterTune Moto Suite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      border-bottom: 2px solid #1ce3e0;
+    }
+    .left {
+      display: flex;
+      align-items: center;
+    }
+    header img {
+      height: 42px;
+      margin-right: 1rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #1ce3e0;
+      margin: 0;
+    }
+    .bike-selector {
+      font-size: 1rem;
+      background-color: #0d1117;
+      color: #1ce3e0;
+      border: 1px solid #1ce3e0;
+      padding: 0.5rem;
+      border-radius: 6px;
+    }
+    .tool-container {
+      padding: 2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    label, select, button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0 1rem;
+      padding: 0.75rem;
+      font-size: 1rem;
+      background-color: #1F1F1F;
+      color: #FAFAFA;
+      border: none;
+    }
+    button {
+      background-color: #1ce3e0;
+      color: #0b0d0e;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+    button:hover {
+      background-color: #25c4b8;
+    }
+    .result {
+      background-color: #1F1F1F;
+      border-left: 4px solid #1ce3e0;
+      padding: 1rem;
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+    .footer-link {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #888;
+      margin-top: 1rem;
+    }
+    .footer-link a {
+      color: #1ce3e0;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .footer-link a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 4rem;
+      padding: 1rem 2rem;
+      background-color: #161b22;
+      text-align: center;
+      color: #999;
+      font-size: 0.875rem;
+      border-top: 1px solid #30363d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left">
+      <img src="images/mastertune-logo.png" alt="MasterTune Logo"/>
+      <h1><a href="index.html">MasterTune Moto Suite</a></h1>
+    </div>
+    <select class="bike-selector">
+      <option selected>PW50</option>
+      <option disabled>Cobra (coming soon)</option>
+      <option disabled>CRF50 (coming soon)</option>
+      <option disabled>KTM Mini (coming soon)</option>
+    </select>
+  </header>
+
+  <div class="tool-container">
+  <h2 class="tool-name">PW50 Fuel Mix Calculator</h2>
+    <label for="fuelType">Fuel Type</label>
+    <select id="fuelType">
+      <option>Pump Gas</option>
+      <option>Race Fuel (MR12)</option>
+    </select>
+
+    <label for="situation">Riding Situation</label>
+    <select id="situation">
+      <option>Break-In</option>
+      <option>Average Riding</option>
+      <option>Racing</option>
+    </select>
+
+    <button onclick="getRatio()">Calculate Mix Ratio</button>
+    <div class="result" id="output">Your recommended fuel-to-oil ratio will appear here.</div>
+    <div class="footer-link">
+      📥 <a href="#" onclick="window.print()">Print Mix Ratio Chart</a>
+    </div>
+  </div>
+
+  
+
+  <script>
+    function getRatio() {
+      const situation = document.getElementById("situation").value;
+      let ratio = "50:1";
+
+      if (situation === "Break-In") {
+        ratio = "40:1";
+      } else if (situation === "Racing") {
+        ratio = "60:1";
+      }
+
+      document.getElementById("output").innerHTML =
+        "Recommended Fuel-to-Oil Ratio: <strong>" + ratio + "</strong>";
+    }
+  </script>
+
+<div id="footer-container"></div>
+<script>
+  fetch('footer.html')
+    .then(r => r.text())
+    .then(t => document.getElementById('footer-container').innerHTML = t);
+</script>
+</body>
+</html>
