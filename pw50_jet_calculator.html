@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PW50 Jet Calculator — MasterTune Moto Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Jet Calculator — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
 header h1 a { text-decoration: none; color: inherit; }
     body {
       margin: 0;
@@ -137,49 +138,41 @@ header h1 a { text-decoration: none; color: inherit; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="left">
-      <img src="images/mastertune-logo.png" alt="MasterTune Logo"/>
-      <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    </div>
-    <select class="bike-selector">
-      <option selected>PW50</option>
-      <option disabled>Cobra (coming soon)</option>
-      <option disabled>CRF50 (coming soon)</option>
-      <option disabled>KTM Mini (coming soon)</option>
-    </select>
-  </header>
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
+<h1><a href="index.html">MasterTune Moto Suite</a></h1>
+</div>
+<select class="bike-selector">
+<option selected="">PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</header>
+<div class="tool-container">
+<h2 class="tool-name">PW50 Jet Calculator</h2>
 
-  <div class="tool-container">
-  <h2 class="tool-name">PW50 Jet Calculator</h2>
-    <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    <div class="tip">
-      <strong>🏁 Factory51 Jetting Mode (Optional)</strong><br/>
+<div class="tip">
+<strong>🏁 Factory51 Jetting Mode (Optional)</strong><br/>
       Use standard jets like <code>#65</code>, <code>#67.5</code>, <code>#70</code>, <code>#72.5</code> — or enable precision values like <code>#68.25</code> using Factory51 mode.
     </div>
-
-    <label for="altitude">Altitude (in feet)</label>
-    <input id="altitude" placeholder="e.g., 1400" type="number"/>
-
-    <label for="fuel">Fuel Type</label>
-    <select id="fuel">
-      <option value="race">Race Gas (e.g., MR12)</option>
-      <option value="pump">Pump Gas</option>
-    </select>
-
-    <label>🏁 Factory51 Mode</label>
-    <label class="switch">
-      <input id="f51mode" type="checkbox"/>
-      <span class="slider"></span>
-    </label>
-
-    <button id="calculateBtn">CALCULATE</button>
-    <div class="result" id="result" style="display: none;"></div>
-  </div>
-
-  
-
-  <script>
+<label for="altitude">Altitude (in feet)</label>
+<input id="altitude" placeholder="e.g., 1400" type="number"/>
+<label for="fuel">Fuel Type</label>
+<select id="fuel">
+<option value="race">Race Gas (e.g., MR12)</option>
+<option value="pump">Pump Gas</option>
+</select>
+<label>🏁 Factory51 Mode</label>
+<label class="switch">
+<input id="f51mode" type="checkbox"/>
+<span class="slider"></span>
+</label>
+<button id="calculateBtn">CALCULATE</button>
+<div class="result" id="result" style="display: none;"></div>
+</div>
+<script>
     document.getElementById("calculateBtn").addEventListener("click", function() {
       const altitude = parseFloat(document.getElementById("altitude").value);
       const fuel = document.getElementById("fuel").value;
@@ -231,7 +224,6 @@ header h1 a { text-decoration: none; color: inherit; }
       result.style.display = 'block';
     });
   </script>
-
 <div id="footer-container"></div>
 <script>
   fetch('footer.html')

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PW50 Break-In Tracker — MasterTune Moto Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Break-In Tracker — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
 header h1 a { text-decoration: none; color: inherit; }
     body {
       margin: 0;
@@ -102,61 +103,54 @@ header h1 a { text-decoration: none; color: inherit; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="left">
-      <img src="images/mastertune-logo.png" alt="MasterTune Logo"/>
-      <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    </div>
-    <select class="bike-selector">
-      <option selected>PW50</option>
-      <option disabled>Cobra (coming soon)</option>
-      <option disabled>CRF50 (coming soon)</option>
-      <option disabled>KTM Mini (coming soon)</option>
-    </select>
-  </header>
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
+<h1><a href="index.html">MasterTune Moto Suite</a></h1>
+</div>
+<select class="bike-selector">
+<option selected="">PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</header>
+<div class="tool-container">
+<h2 class="tool-name">PW50 Break-In Tracker</h2>
 
-  <div class="tool-container">
-  <h2 class="tool-name">PW50 Break-In Tracker</h2>
-    <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    <p><strong>🔥 Factory51 Break-In Protocol</strong><br/>
+<p><strong>🔥 Factory51 Break-In Protocol</strong><br/>
     Track your PW50 engine break-in process like a pro. This tool logs your sessions, throttle use, and notes while calculating total time — aiming for 2.0+ hours across multiple heat cycles.</p>
-    <div class="result">
-      <strong>🚨 READ THIS BEFORE STARTING:</strong>
-      <ul>
-        <li>✅ Oil tank full and bled? (See Chapter 9)</li>
-        <li>✅ Clean, oiled air filter installed?</li>
-        <li>✅ Correct spark plug heat range in?</li>
-        <li>⚠️ Break in on flat ground. No hills, sand, or mud.</li>
-        <li>🚫 Never hold steady throttle. Keep RPMs varied — always moving.</li>
-        <li>🧳 Let the bike fully cool between sessions. Heat cycling matters.</li>
-        <li>💨 Short 2–3 second throttle bursts are okay — just don’t hold it wide.</li>
-        <li>🕵️ Check spark plug color often. Light tan = you're on track.</li>
-      </ul>
-      <p><strong>🏁 Goal:</strong> Multiple 5–15 min rides, progressing from low throttle to full range. Once the plug reads clean and temps hold steady, you're ready to start tuning for performance.</p>
-    </div>
-
-    <label for="session">Enter Session Duration (minutes)</label>
-    <input id="session" placeholder="e.g. 20" type="number"/>
-    <label for="intensity">Throttle Intensity</label>
-    <select id="intensity">
-      <option value="Low">Low</option>
-      <option value="Medium">Medium</option>
-      <option value="High">High</option>
-    </select>
-    <label for="notes">Notes (terrain, behavior, weather, etc.)</label>
-    <textarea id="notes" placeholder="e.g. Easy laps, no WOT, mild hills." rows="3"></textarea>
-
-    <button onclick="logSession()">➕ ADD SESSION</button>
-    <button onclick="exportLog()">📀 EXPORT LOG</button>
-    <button onclick="window.print()">🖸️ PRINT SUMMARY</button>
-
-    <div class="result" id="summary" style="display:none;"></div>
-    <ul id="log"></ul>
-  </div>
-
-  
-
-  <script>
+<div class="result">
+<strong>🚨 READ THIS BEFORE STARTING:</strong>
+<ul>
+<li>✅ Oil tank full and bled? (See Chapter 9)</li>
+<li>✅ Clean, oiled air filter installed?</li>
+<li>✅ Correct spark plug heat range in?</li>
+<li>⚠️ Break in on flat ground. No hills, sand, or mud.</li>
+<li>🚫 Never hold steady throttle. Keep RPMs varied — always moving.</li>
+<li>🧳 Let the bike fully cool between sessions. Heat cycling matters.</li>
+<li>💨 Short 2–3 second throttle bursts are okay — just don’t hold it wide.</li>
+<li>🕵️ Check spark plug color often. Light tan = you're on track.</li>
+</ul>
+<p><strong>🏁 Goal:</strong> Multiple 5–15 min rides, progressing from low throttle to full range. Once the plug reads clean and temps hold steady, you're ready to start tuning for performance.</p>
+</div>
+<label for="session">Enter Session Duration (minutes)</label>
+<input id="session" placeholder="e.g. 20" type="number"/>
+<label for="intensity">Throttle Intensity</label>
+<select id="intensity">
+<option value="Low">Low</option>
+<option value="Medium">Medium</option>
+<option value="High">High</option>
+</select>
+<label for="notes">Notes (terrain, behavior, weather, etc.)</label>
+<textarea id="notes" placeholder="e.g. Easy laps, no WOT, mild hills." rows="3"></textarea>
+<button onclick="logSession()">➕ ADD SESSION</button>
+<button onclick="exportLog()">📀 EXPORT LOG</button>
+<button onclick="window.print()">🖸️ PRINT SUMMARY</button>
+<div class="result" id="summary" style="display:none;"></div>
+<ul id="log"></ul>
+</div>
+<script>
     let totalMinutes = 0;
     let sessionCount = 0;
     const sessionLog = [];
@@ -211,7 +205,6 @@ header h1 a { text-decoration: none; color: inherit; }
       document.body.removeChild(a);
     }
   </script>
-
 <div id="footer-container"></div>
 <script>
   fetch('footer.html')

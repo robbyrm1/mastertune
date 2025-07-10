@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PW50 Port Timing Visualizer — MasterTune Moto Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Port Timing Visualizer — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
 header h1 a { text-decoration: none; color: inherit; }
     body {
       margin: 0;
@@ -98,36 +99,32 @@ header h1 a { text-decoration: none; color: inherit; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="left">
-      <img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
-      <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    </div>
-    <select class="bike-selector">
-      <option selected>PW50</option>
-      <option disabled>Cobra (coming soon)</option>
-      <option disabled>CRF50 (coming soon)</option>
-      <option disabled>KTM Mini (coming soon)</option>
-    </select>
-  </header>
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
+<h1><a href="index.html">MasterTune Moto Suite</a></h1>
+</div>
+<select class="bike-selector">
+<option selected="">PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</header>
+<div class="tool-container">
+<h2 class="tool-name">PW50 Port Timing Visualizer</h2>
 
-  <div class="tool-container">
-  <h2 class="tool-name">PW50 Port Timing Visualizer</h2>
-    <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    <label for="ex">Exhaust Duration (degrees)</label>
-    <input id="ex" placeholder="e.g. 175" step="1" type="number"/>
-    <label for="trans">Transfer Duration (degrees)</label>
-    <input id="trans" placeholder="e.g. 125" step="1" type="number"/>
-    <label for="intake">Intake Duration (degrees)</label>
-    <input id="intake" placeholder="e.g. 135" step="1" type="number"/>
-    <button onclick="drawMap()">🎯 GENERATE CHART</button>
-    <canvas height="300" id="chart" width="600"></canvas>
-    <div class="result" id="blowdownResult" style="display: none;"></div>
-  </div>
-
-  
-
-  <script>
+<label for="ex">Exhaust Duration (degrees)</label>
+<input id="ex" placeholder="e.g. 175" step="1" type="number"/>
+<label for="trans">Transfer Duration (degrees)</label>
+<input id="trans" placeholder="e.g. 125" step="1" type="number"/>
+<label for="intake">Intake Duration (degrees)</label>
+<input id="intake" placeholder="e.g. 135" step="1" type="number"/>
+<button onclick="drawMap()">🎯 GENERATE CHART</button>
+<canvas height="300" id="chart" width="600"></canvas>
+<div class="result" id="blowdownResult" style="display: none;"></div>
+</div>
+<script>
     function drawMap() {
       const ex = parseInt(document.getElementById("ex").value);
       const trans = parseInt(document.getElementById("trans").value);
@@ -165,7 +162,6 @@ header h1 a { text-decoration: none; color: inherit; }
       blowEl.style.display = "block";
     }
   </script>
-
 <div id="footer-container"></div>
 <script>
   fetch('footer.html')

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PW50 Fuel Mix Calculator — MasterTune Moto Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Fuel Mix Calculator — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
 header h1 a { text-decoration: none; color: inherit; }
     body {
       margin: 0;
@@ -102,44 +103,38 @@ header h1 a { text-decoration: none; color: inherit; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="left">
-      <img src="images/mastertune-logo.png" alt="MasterTune Logo"/>
-      <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    </div>
-    <select class="bike-selector">
-      <option selected>PW50</option>
-      <option disabled>Cobra (coming soon)</option>
-      <option disabled>CRF50 (coming soon)</option>
-      <option disabled>KTM Mini (coming soon)</option>
-    </select>
-  </header>
-
-  <div class="tool-container">
-  <h2 class="tool-name">PW50 Fuel Mix Calculator</h2>
-    <label for="fuelType">Fuel Type</label>
-    <select id="fuelType">
-      <option>Pump Gas</option>
-      <option>Race Fuel (MR12)</option>
-    </select>
-
-    <label for="situation">Riding Situation</label>
-    <select id="situation">
-      <option>Break-In</option>
-      <option>Average Riding</option>
-      <option>Racing</option>
-    </select>
-
-    <button onclick="getRatio()">Calculate Mix Ratio</button>
-    <div class="result" id="output">Your recommended fuel-to-oil ratio will appear here.</div>
-    <div class="footer-link">
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
+<h1><a href="index.html">MasterTune Moto Suite</a></h1>
+</div>
+<select class="bike-selector">
+<option selected="">PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</header>
+<div class="tool-container">
+<h2 class="tool-name">PW50 Fuel Mix Calculator</h2>
+<label for="fuelType">Fuel Type</label>
+<select id="fuelType">
+<option>Pump Gas</option>
+<option>Race Fuel (MR12)</option>
+</select>
+<label for="situation">Riding Situation</label>
+<select id="situation">
+<option>Break-In</option>
+<option>Average Riding</option>
+<option>Racing</option>
+</select>
+<button onclick="getRatio()">Calculate Mix Ratio</button>
+<div class="result" id="output">Your recommended fuel-to-oil ratio will appear here.</div>
+<div class="footer-link">
       📥 <a href="#" onclick="window.print()">Print Mix Ratio Chart</a>
-    </div>
-  </div>
-
-  
-
-  <script>
+</div>
+</div>
+<script>
     function getRatio() {
       const situation = document.getElementById("situation").value;
       let ratio = "50:1";
@@ -154,7 +149,6 @@ header h1 a { text-decoration: none; color: inherit; }
         "Recommended Fuel-to-Oil Ratio: <strong>" + ratio + "</strong>";
     }
   </script>
-
 <div id="footer-container"></div>
 <script>
   fetch('footer.html')

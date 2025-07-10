@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PW50 VIN Decoder — MasterTune Moto Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 VIN Decoder — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
 header h1 a { text-decoration: none; color: inherit; }
     body {
       margin: 0;
@@ -116,38 +117,34 @@ header h1 a { text-decoration: none; color: inherit; }
 </head>
 <body>
 <header>
-  <div class="left">
-    <img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
-    <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-  </div>
-  <select class="bike-selector">
-    <option>PW50</option>
-    <option disabled>Cobra (coming soon)</option>
-    <option disabled>CRF50 (coming soon)</option>
-    <option disabled>KTM Mini (coming soon)</option>
-  </select>
-</header>
-
-<div class="tool-container">
-  <h2 class="tool-name">PW50 VIN Decoder</h2>
-  <p class="description">Enter the 10th digit of your PW50 VIN to find your model year and details.</p>
-  <div class="input-block">
-    <input id="vinDigit" maxlength="1" placeholder="Enter 10th digit (e.g. N)" type="text"/>
-    <button onclick="decodeVIN()">DECODE</button>
-  </div>
-  <div class="results" id="resultBox" style="display:none">
-    <div class="result-item" id="yearResult"></div>
-    <div class="result-item" id="notesResult"></div>
-  </div>
-  <div class="tip">💡 TIP: The VIN is stamped on the frame, usually near the front steering tube.</div>
-  <div class="actions">
-    <button onclick="window.print()">🖨️ Print</button>
-    <button onclick="saveData()">💾 Save to Device</button>
-  </div>
+<div class="left">
+<img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
+<h1><a href="index.html">MasterTune Moto Suite</a></h1>
 </div>
-
-
-
+<select class="bike-selector">
+<option>PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</header>
+<div class="tool-container">
+<h2 class="tool-name">PW50 VIN Decoder</h2>
+<p class="description">Enter the 10th digit of your PW50 VIN to find your model year and details.</p>
+<div class="input-block">
+<input id="vinDigit" maxlength="1" placeholder="Enter 10th digit (e.g. N)" type="text"/>
+<button onclick="decodeVIN()">DECODE</button>
+</div>
+<div class="results" id="resultBox" style="display:none">
+<div class="result-item" id="yearResult"></div>
+<div class="result-item" id="notesResult"></div>
+</div>
+<div class="tip">💡 TIP: The VIN is stamped on the frame, usually near the front steering tube.</div>
+<div class="actions">
+<button onclick="window.print()">🖨️ Print</button>
+<button onclick="saveData()">💾 Save to Device</button>
+</div>
+</div>
 <script>
   const vinMap = {
     A: { year: 1980 }, B: { year: 1981 }, C: { year: 1982 }, D: { year: 1983 },
@@ -187,7 +184,6 @@ header h1 a { text-decoration: none; color: inherit; }
     alert("Save to device function placeholder");
   }
 </script>
-
 <div id="footer-container"></div>
 <script>
   fetch('footer.html')

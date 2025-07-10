@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PW50 Oil Pump Setup Tool — MasterTune Moto Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Oil Pump Setup Tool — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
 header h1 a { text-decoration: none; color: inherit; }
     body {
       margin: 0;
@@ -109,50 +110,45 @@ header h1 a { text-decoration: none; color: inherit; }
 </head>
 <body>
 <header>
-  <div class="left">
-    <img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
-    <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-  </div>
-  <select class="bike-selector">
-    <option selected>PW50</option>
-    <option disabled>Cobra (coming soon)</option>
-    <option disabled>CRF50 (coming soon)</option>
-    <option disabled>KTM Mini (coming soon)</option>
-  </select>
+<div class="left">
+<img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
+<h1><a href="index.html">MasterTune Moto Suite</a></h1>
+</div>
+<select class="bike-selector">
+<option selected="">PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
 </header>
-
 <div class="tool-container">
-  <h2 class="tool-name">PW50 Oil Pump Setup Tool</h2>
-  <div class="tip">
-    <strong>📏 How to Measure Your Oil Pump Stroke:</strong><br/><br/>
+<h2 class="tool-name">PW50 Oil Pump Setup Tool</h2>
+<div class="tip">
+<strong>📏 How to Measure Your Oil Pump Stroke:</strong><br/><br/>
     1. 🔓 Open the throttle fully — use a small zip tie to hold it wide open.<br/>
     2. 🔧 Remove the oil pump from the engine (leave lines attached if possible).<br/>
     3. 🔁 Rotate the <strong>white nylon drive gear</strong> slowly by hand.<br/>
     4. 👀 Watch the <strong>metal pump arm</strong> — it will rise and fall with each stroke.<br/>
     5. 📏 Measure the full travel (stroke) of the metal arm — this is your pump stroke.<br/><br/>
     📹 <em>Need a visual?</em> <a href="#" style="color:#30e1d3; text-decoration:underline;">Watch the setup video here</a>
-  </div>
-
-  <p>Enter your stroke, fuel, and jetting setup. We’ll estimate your oil ratio and show a color-coded health range based on Factory51 research.</p>
-  <label for="stroke">Pump Stroke (inches)</label>
-  <input id="stroke" placeholder="e.g., 0.022" step="0.0001" type="number"/>
-  <label for="fuel">Fuel Type</label>
-  <select id="fuel">
-    <option value="pump">Pump Gas</option>
-    <option value="race">Race Gas</option>
-  </select>
-  <label for="jetting">Jetting Condition</label>
-  <select id="jetting">
-    <option value="normal">Normal</option>
-    <option value="lean">Leaner than ideal</option>
-    <option value="rich">Rich</option>
-  </select>
-  <button onclick="calculateRatio()">CALCULATE</button>
-  <div class="result" id="result" style="display: none;"></div>
 </div>
-
-
-
+<p>Enter your stroke, fuel, and jetting setup. We’ll estimate your oil ratio and show a color-coded health range based on Factory51 research.</p>
+<label for="stroke">Pump Stroke (inches)</label>
+<input id="stroke" placeholder="e.g., 0.022" step="0.0001" type="number"/>
+<label for="fuel">Fuel Type</label>
+<select id="fuel">
+<option value="pump">Pump Gas</option>
+<option value="race">Race Gas</option>
+</select>
+<label for="jetting">Jetting Condition</label>
+<select id="jetting">
+<option value="normal">Normal</option>
+<option value="lean">Leaner than ideal</option>
+<option value="rich">Rich</option>
+</select>
+<button onclick="calculateRatio()">CALCULATE</button>
+<div class="result" id="result" style="display: none;"></div>
+</div>
 <script>
   function estimateRatio(stroke) {
     const a = 0.9348;
@@ -205,7 +201,6 @@ header h1 a { text-decoration: none; color: inherit; }
     document.getElementById("result").style.display = "block";
   }
 </script>
-
 <div id="footer-container"></div>
 <script>
   fetch('footer.html')

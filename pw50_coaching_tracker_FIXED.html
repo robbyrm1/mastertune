@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PW50 Coaching Tracker — MasterTune Moto Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 Coaching Tracker — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
 header h1 a { text-decoration: none; color: inherit; }
     body {
       margin: 0;
@@ -95,54 +96,46 @@ header h1 a { text-decoration: none; color: inherit; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="left">
-      <img src="images/mastertune-logo.png" alt="MasterTune Logo"/>
-      <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    </div>
-    <select class="bike-selector">
-      <option selected>PW50</option>
-      <option disabled>Cobra (coming soon)</option>
-      <option disabled>CRF50 (coming soon)</option>
-    </select>
-  </header>
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
+<h1><a href="index.html">MasterTune Moto Suite</a></h1>
+</div>
+<select class="bike-selector">
+<option selected="">PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+</select>
+</header>
+<div class="tool-container">
+<h2 class="tool-name">PW50 Coaching Tracker</h2>
 
-  <div class="tool-container">
-  <h2 class="tool-name">PW50 Coaching Tracker</h2>
-    <h2>PW50 Coaching Tracker</h2>
-    <p>Use this coaching tool during practice or race day to log lap times, record visual/riding cues, and monitor rider performance. Saved data is stored in your browser and can be exported or visualized anytime.</p>
-    <ul>
-      <li><strong>Lap Time Logger:</strong> Enter a time and notes each lap. It auto-saves, graphs laps, and tracks progress.</li>
-      <li><strong>Copy All Lap Data:</strong> Copies your full lap log to clipboard for sharing or posting.</li>
-      <li><strong>Export Lap Log:</strong> Downloads a text file of all lap times and notes.</li>
-      <li><strong>Attack Stance & Corner Cue Builders:</strong> Add visual/riding cues and drills for specific track sections.</li>
-      <li><strong>Notes Log:</strong> Use for hydration, fatigue, behavior, or feedback — all tied to lap-by-lap effort.</li>
-    </ul>
-
-    <h2>⏱️ Lap Time Logger</h2>
-    <input id="lapTime" placeholder="Enter lap time in seconds" type="number"/>
-    <textarea id="lapNotes" placeholder="Corner notes, throttle, position, etc." rows="2"></textarea>
-    <button onclick="addLap()">➕ Log Lap</button>
-    <button onclick="copyLapData()">📋 Copy All Lap Data</button>
-    <button onclick="exportLapData()">💼 Export Lap Log</button>
-    <div id="lapLog"></div>
-    <canvas id="lapChart" width="400" height="200"></canvas>
-
-    <h2>📋 Posture & Cue Builder</h2>
-    <textarea placeholder="Drills: knees out, elbows up, chin forward, toes on pegs, light hands..." rows="4"></textarea>
-    <p><em>Use this space to record cues or run specific stance drills for warm-up or training focus.</em></p>
-
-    <h2>💡 Corner Cue Builder</h2>
-    <textarea placeholder="Ex: Elbows up, eyes forward, inside leg pressure, smooth throttle roll." rows="4"></textarea>
-    <p><em>Build cues and visuals for each specific corner or section of track.</em></p>
-
-    <h2>🧠 General Notes Log</h2>
-    <textarea placeholder="Any rider feedback, parent notes, bike feel, fatigue, hydration, or coaching observations." rows="5"></textarea>
-  </div>
-
-  
-
-  <script>
+<p>Use this coaching tool during practice or race day to log lap times, record visual/riding cues, and monitor rider performance. Saved data is stored in your browser and can be exported or visualized anytime.</p>
+<ul>
+<li><strong>Lap Time Logger:</strong> Enter a time and notes each lap. It auto-saves, graphs laps, and tracks progress.</li>
+<li><strong>Copy All Lap Data:</strong> Copies your full lap log to clipboard for sharing or posting.</li>
+<li><strong>Export Lap Log:</strong> Downloads a text file of all lap times and notes.</li>
+<li><strong>Attack Stance &amp; Corner Cue Builders:</strong> Add visual/riding cues and drills for specific track sections.</li>
+<li><strong>Notes Log:</strong> Use for hydration, fatigue, behavior, or feedback — all tied to lap-by-lap effort.</li>
+</ul>
+<h2>⏱️ Lap Time Logger</h2>
+<input id="lapTime" placeholder="Enter lap time in seconds" type="number"/>
+<textarea id="lapNotes" placeholder="Corner notes, throttle, position, etc." rows="2"></textarea>
+<button onclick="addLap()">➕ Log Lap</button>
+<button onclick="copyLapData()">📋 Copy All Lap Data</button>
+<button onclick="exportLapData()">💼 Export Lap Log</button>
+<div id="lapLog"></div>
+<canvas height="200" id="lapChart" width="400"></canvas>
+<h2>📋 Posture &amp; Cue Builder</h2>
+<textarea placeholder="Drills: knees out, elbows up, chin forward, toes on pegs, light hands..." rows="4"></textarea>
+<p><em>Use this space to record cues or run specific stance drills for warm-up or training focus.</em></p>
+<h2>💡 Corner Cue Builder</h2>
+<textarea placeholder="Ex: Elbows up, eyes forward, inside leg pressure, smooth throttle roll." rows="4"></textarea>
+<p><em>Build cues and visuals for each specific corner or section of track.</em></p>
+<h2>🧠 General Notes Log</h2>
+<textarea placeholder="Any rider feedback, parent notes, bike feel, fatigue, hydration, or coaching observations." rows="5"></textarea>
+</div>
+<script>
     let lapCount = 0;
     const lapTimes = [];
     const lapNotesArr = [];
@@ -224,7 +217,6 @@ header h1 a { text-decoration: none; color: inherit; }
       });
     }
   </script>
-
 <div id="footer-container"></div>
 <script>
   fetch('footer.html')

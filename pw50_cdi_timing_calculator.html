@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PW50 CDI Timing Calculator — MasterTune Moto Suite</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PW50 CDI Timing Calculator — MasterTune Moto Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<style>
 header h1 a { text-decoration: none; color: inherit; }
     body {
       margin: 0;
@@ -101,49 +102,39 @@ header h1 a { text-decoration: none; color: inherit; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="left">
-      <img src="images/mastertune-logo.png" alt="MasterTune Logo"/>
-      <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    </div>
-    <select class="bike-selector">
-      <option selected>PW50</option>
-      <option disabled>Cobra (coming soon)</option>
-      <option disabled>CRF50 (coming soon)</option>
-      <option disabled>KTM Mini (coming soon)</option>
-    </select>
-  </header>
+<header>
+<div class="left">
+<img alt="MasterTune Logo" src="images/mastertune-logo.png"/>
+<h1><a href="index.html">MasterTune Moto Suite</a></h1>
+</div>
+<select class="bike-selector">
+<option selected="">PW50</option>
+<option disabled="">Cobra (coming soon)</option>
+<option disabled="">CRF50 (coming soon)</option>
+<option disabled="">KTM Mini (coming soon)</option>
+</select>
+</header>
+<div class="tool-container">
+<h2 class="tool-name">PW50 CDI Timing Calculator</h2>
 
-  <div class="tool-container">
-  <h2 class="tool-name">PW50 CDI Timing Calculator</h2>
-    <h1><a href="index.html">MasterTune Moto Suite</a></h1>
-    <p>Convert your dial gauge reading in millimeters into degrees BTDC. Useful for timing aftermarket CDI stators by measuring piston position before Top Dead Center (TDC).</p>
-
-    <label for="stroke">Crankshaft Stroke (mm)</label>
-    <select id="stroke">
-      <option value="39.2">39.2mm (Stock)</option>
-      <option value="45">45mm (Stroker)</option>
-    </select>
-
-    <label for="flywheel">Flywheel Circumference (mm)</label>
-    <input id="flywheel" type="number" value="377"/>
-
-    <label for="timingMM">Distance Before TDC (mm)</label>
-    <input id="timingMM" placeholder="e.g. 1.5" type="number"/>
-
-    <button onclick="calculateDegrees()">🔧 Convert to Degrees</button>
-
-    <div class="result" id="result" style="display:none;"></div>
-
-    <div class="notes">
-      <p><strong>Note:</strong> This gives a great starting point, but ignition timing should always be tested and adjusted based on real-world performance. Final adjustment is best done with the stator case off while observing spark timing and throttle response.</p>
-      <p>This calculator assumes a general flywheel size of 377mm (PW50 CDI flywheel). If you're using a different flywheel, update the value above.</p>
-    </div>
-  </div>
-
-  
-
-  <script>
+<p>Convert your dial gauge reading in millimeters into degrees BTDC. Useful for timing aftermarket CDI stators by measuring piston position before Top Dead Center (TDC).</p>
+<label for="stroke">Crankshaft Stroke (mm)</label>
+<select id="stroke">
+<option value="39.2">39.2mm (Stock)</option>
+<option value="45">45mm (Stroker)</option>
+</select>
+<label for="flywheel">Flywheel Circumference (mm)</label>
+<input id="flywheel" type="number" value="377"/>
+<label for="timingMM">Distance Before TDC (mm)</label>
+<input id="timingMM" placeholder="e.g. 1.5" type="number"/>
+<button onclick="calculateDegrees()">🔧 Convert to Degrees</button>
+<div class="result" id="result" style="display:none;"></div>
+<div class="notes">
+<p><strong>Note:</strong> This gives a great starting point, but ignition timing should always be tested and adjusted based on real-world performance. Final adjustment is best done with the stator case off while observing spark timing and throttle response.</p>
+<p>This calculator assumes a general flywheel size of 377mm (PW50 CDI flywheel). If you're using a different flywheel, update the value above.</p>
+</div>
+</div>
+<script>
     function calculateDegrees() {
       const stroke = parseFloat(document.getElementById('stroke').value);
       const flywheel = parseFloat(document.getElementById('flywheel').value);
@@ -161,7 +152,6 @@ header h1 a { text-decoration: none; color: inherit; }
       resultBox.style.display = 'block';
     }
   </script>
-
 <div id="footer-container"></div>
 <script>
   fetch('footer.html')
